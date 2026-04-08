@@ -12,19 +12,266 @@
             <div id="navbar-placeholder"></div>
         </header>
         <main>
-            <form id="search-form">
-                <input
-                    type="text"
-                    id="search-input"
-                    placeholder="Search your Pokemon..."
-                    required
-                />
-                <button type="submit" class="search-icon">🔍</button>
-            </form>
-            <div id="results-container" class="results-container"></div>
+            <section id="home-section">
+                <form id="search-form">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search your Pokemon..."
+                        required
+                    />
+                    <button type="submit" class="search-icon">🔍</button>
+                </form>
+            </section>
+            <div class="browser">
+                <aside class="browse-section" id="browse-section">
+                    <h3 class="filter-heading">Sort by</h3>
+                    <select id="sort-select" class="sort-select">
+                        <option value="id">ID (Lowest First)</option>
+                        <option value="hp-high">HP (Highest First)</option>
+                        <option value="hp-low">HP (Lowest First)</option>
+                    </select>
+
+                    <h3 class="filter-heading">Select Generations</h3>
+                    <div class="checkbox-group">
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="1"
+                            />
+                            Generation 1</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="2"
+                            />
+                            Generation 2</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="3"
+                            />
+                            Generation 3</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="4"
+                            />
+                            Generation 4</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="5"
+                            />
+                            Generation 5</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="6"
+                            />
+                            Generation 6</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="7"
+                            />
+                            Generation 7</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="8"
+                            />
+                            Generation 8</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="gen-check"
+                                value="9"
+                            />
+                            Generation 9</label
+                        >
+                    </div>
+
+                    <h3 class="filter-heading">Filter by Type</h3>
+                    <div class="checkbox-group">
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="fire"
+                            />
+                            🔥 Fire</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="water"
+                            />
+                            💧 Water</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="grass"
+                            />
+                            🌿 Grass</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="electric"
+                            />
+                            ⚡ Electric</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="ice"
+                            />
+                            ❄️ Ice</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="fighting"
+                            />
+                            🥊 Fighting</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="poison"
+                            />
+                            ☠️ Poison</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="ground"
+                            />
+                            ⛰️ Ground</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="flying"
+                            />
+                            🦅 Flying</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="psychic"
+                            />
+                            🔮 Psychic</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="bug"
+                            />
+                            🐞 Bug</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="rock"
+                            />
+                            🪨 Rock</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="ghost"
+                            />
+                            👻 Ghost</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="dragon"
+                            />
+                            🐉 Dragon</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="steel"
+                            />
+                            ⚙️ Steel</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="fairy"
+                            />
+                            🧚 Fairy</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="normal"
+                            />
+                            ⚪ Normal</label
+                        >
+                        <label
+                            ><input
+                                type="checkbox"
+                                class="type-check"
+                                value="dark"
+                            />
+                            🌑 Dark</label
+                        >
+                    </div>
+
+                    <h3 class="filter-heading">Min HP</h3>
+                    <input type="number" id="min-hp" placeholder="E.g. 50" />
+                </aside>
+                <section id="results-section" class="results-section">
+                    <div id="results-container" class="results-container"></div>
+                    <div id="page-controls" class="page-controls">
+                        <button id="prev-btn" class="page-btn">
+                            ⬅️ Previous
+                        </button>
+                        <p id="page-info" class="page-info">Page 1</p>
+                        <button id="next-btn" class="page-btn">Next ➡️</button>
+                    </div>
+                </section>
+            </div>
         </main>
         <script src="src/index.js"></script>
         <script src="src/loader.js"></script>
-        <script src="src/themeToggle.js"></script>
     </body>
 </html>

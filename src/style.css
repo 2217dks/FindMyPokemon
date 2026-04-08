@@ -32,7 +32,30 @@
         color 0.3s ease;
     text-decoration: none;
 }
-
+main {
+    display: flex;
+    flex-direction: column;
+}
+.browser {
+    display: flex;
+    flex-direction: row;
+}
+.browse-section {
+    display: none;
+    padding: 20px;
+    width: 300px;
+    border-right: 2px solid var(--border);
+    min-height: 100vh;
+}
+.filter-heading {
+    margin: 20px 20px 10px;
+}
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px;
+}
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -95,7 +118,53 @@
     justify-content: center;
     align-items: center;
 }
-
+.sort-select {
+    margin: 0 20px 20px;
+    padding: 5px;
+    width: 80%;
+    border-radius: 5px;
+}
+.results-section {
+    flex-grow: 1;
+    padding: 20px;
+}
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+}
+.page-controls {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.page-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid var(--border);
+    font-weight: bold;
+}
+.page-btn:hover {
+    background-color: var(--accent);
+    color: white;
+}
+.page-info {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.pokemon-image {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+.randomPage {
+    display: flex;
+    justify-content: center;
+}
 .pokemon-card {
     width: 200px;
     padding: 20px;
