@@ -22,40 +22,162 @@
     --shadow: rgba(0, 0, 0, 0.5);
 }
 
+.normal {
+    background-color: #a8a878;
+    color: white;
+}
+.fire {
+    background-color: #f08030;
+    color: white;
+}
+.water {
+    background-color: #6890f0;
+    color: white;
+}
+.electric {
+    background-color: #f8d030;
+    color: black;
+}
+.grass {
+    background-color: #78c850;
+    color: white;
+}
+.ice {
+    background-color: #98d8d8;
+    color: black;
+}
+.fighting {
+    background-color: #c03028;
+    color: white;
+}
+.poison {
+    background-color: #a040a0;
+    color: white;
+}
+.ground {
+    background-color: #e0c068;
+    color: white;
+}
+.flying {
+    background-color: #a890f0;
+    color: white;
+}
+.psychic {
+    background-color: #f85888;
+    color: white;
+}
+.bug {
+    background-color: #a8b820;
+    color: white;
+}
+.rock {
+    background-color: #b8a038;
+    color: white;
+}
+.ghost {
+    background-color: #705898;
+    color: white;
+}
+.dragon {
+    background-color: #7038f8;
+    color: white;
+}
+.dark {
+    background-color: #705848;
+    color: white;
+}
+.steel {
+    background-color: #b8b8d0;
+    color: black;
+}
+.fairy {
+    background-color: #ee99ac;
+    color: black;
+}
+
 * {
     margin: 0;
     padding: 0;
     color: var(--text-main);
-    background-color: var(--bg-color);
     transition:
         background-color 0.3s ease,
         color 0.3s ease;
     text-decoration: none;
 }
+
+input,
+select,
+button {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+}
+
+p,
+h1,
+h2,
+h3,
+label {
+    color: var(--text-main);
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
 main {
     display: flex;
     flex-direction: column;
 }
+
+#home-section {
+    display: none;
+}
+
 .browser {
     display: flex;
     flex-direction: row;
 }
+
 .browse-section {
-    display: none;
     padding: 20px;
     width: 300px;
+    flex-shrink: 0;
     border-right: 2px solid var(--border);
     min-height: 100vh;
 }
+
 .filter-heading {
     margin: 20px 20px 10px;
 }
+
 .checkbox-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 8px;
     margin: 20px;
 }
+
+.pill-checkbox {
+    display: inline-block;
+    margin: 4px;
+}
+.pill-checkbox input {
+    display: none;
+}
+/* Base style: Vibrant colors, transparent border so it doesn't jump */
+.pill-checkbox span {
+    display: inline-block;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border 0.1s;
+}
+/* Only change the border when checked. var(--text-main) makes it black in light mode, and white in dark mode! */
+.pill-checkbox input:checked + span {
+    border: 3px solid var(--text-main);
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -118,16 +240,19 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 .sort-select {
     margin: 0 20px 20px;
     padding: 5px;
     width: 80%;
     border-radius: 5px;
 }
+
 .results-section {
     flex-grow: 1;
     padding: 20px;
 }
+
 .results-container {
     display: flex;
     flex-wrap: wrap;
@@ -135,12 +260,14 @@ main {
     justify-content: center;
     margin: 20px 0;
 }
+
 .page-controls {
     display: none;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
+
 .page-btn {
     padding: 10px 20px;
     border-radius: 10px;
@@ -148,28 +275,115 @@ main {
     border: 2px solid var(--border);
     font-weight: bold;
 }
+
 .page-btn:hover {
     background-color: var(--accent);
     color: white;
 }
+
 .page-info {
     font-weight: bold;
     font-size: 1.2rem;
 }
+
 .pokemon-image {
     width: 150px;
     height: 150px;
     object-fit: contain;
 }
+
 .randomPage {
     display: flex;
     justify-content: center;
 }
+
 .pokemon-card {
     width: 200px;
     padding: 20px;
     border-radius: 20px;
+    background: var(--card-bg);
     border: 2px solid var(--border);
+    box-shadow: 0 4px 10px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon-card:hover {
+    scale: 1.02;
+    transition: scale 0.1s ease-in-out;
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+.pokemon-id {
+    align-self: flex-start;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+.pokemon-name {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.pill {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.stat-box {
+    background: var(--bg-color);
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-name {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.abilities-section {
+    width: 100%;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+}
+
+.abilities-section ul {
+    margin-top: 5px;
+    padding-left: 25px;
+}
+
+.abilities-section li {
+    color: var(--text-muted);
+    margin-bottom: 3px;
 }
 
 .results-container {

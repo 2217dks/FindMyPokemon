@@ -27,9 +27,9 @@
                 <aside class="browse-section" id="browse-section">
                     <h3 class="filter-heading">Sort by</h3>
                     <select id="sort-select" class="sort-select">
-                        <option value="id">ID (Lowest First)</option>
-                        <option value="hp-high">HP (Highest First)</option>
-                        <option value="hp-low">HP (Lowest First)</option>
+                        <option value="id">ID (Low to High)</option>
+                        <option value="hp-high">HP (High to Low)</option>
+                        <option value="hp-low">HP (Low to High)</option>
                     </select>
 
                     <h3 class="filter-heading">Select Generations</h3>
@@ -39,6 +39,7 @@
                                 type="checkbox"
                                 class="gen-check"
                                 value="1"
+                                checked
                             />
                             Generation 1</label
                         >
@@ -110,150 +111,167 @@
 
                     <h3 class="filter-heading">Filter by Type</h3>
                     <div class="checkbox-group">
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="fire"
-                            />
-                            🔥 Fire</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="water"
-                            />
-                            💧 Water</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="grass"
-                            />
-                            🌿 Grass</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="electric"
-                            />
-                            ⚡ Electric</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="ice"
-                            />
-                            ❄️ Ice</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="fighting"
-                            />
-                            🥊 Fighting</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="poison"
-                            />
-                            ☠️ Poison</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="ground"
-                            />
-                            ⛰️ Ground</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="flying"
-                            />
-                            🦅 Flying</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="psychic"
-                            />
-                            🔮 Psychic</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="bug"
-                            />
-                            🐞 Bug</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="rock"
-                            />
-                            🪨 Rock</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="ghost"
-                            />
-                            👻 Ghost</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="dragon"
-                            />
-                            🐉 Dragon</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="steel"
-                            />
-                            ⚙️ Steel</label
-                        >
-                        <label
-                            ><input
-                                type="checkbox"
-                                class="type-check"
-                                value="fairy"
-                            />
-                            🧚 Fairy</label
-                        >
-                        <label
-                            ><input
+                        <label class="pill-checkbox">
+                            <input
                                 type="checkbox"
                                 class="type-check"
                                 value="normal"
                             />
-                            ⚪ Normal</label
-                        >
-                        <label
-                            ><input
+                            <span class="pill normal">Normal</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="fire"
+                            />
+                            <span class="pill fire">Fire</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="water"
+                            />
+                            <span class="pill water">Water</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="electric"
+                            />
+                            <span class="pill electric">Electric</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="grass"
+                            />
+                            <span class="pill grass">Grass</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="ice"
+                            />
+                            <span class="pill ice">Ice</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="fighting"
+                            />
+                            <span class="pill fighting">Fighting</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="poison"
+                            />
+                            <span class="pill poison">Poison</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="ground"
+                            />
+                            <span class="pill ground">Ground</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="flying"
+                            />
+                            <span class="pill flying">Flying</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="psychic"
+                            />
+                            <span class="pill psychic">Psychic</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="bug"
+                            />
+                            <span class="pill bug">Bug</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="rock"
+                            />
+                            <span class="pill rock">Rock</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="ghost"
+                            />
+                            <span class="pill ghost">Ghost</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="dragon"
+                            />
+                            <span class="pill dragon">Dragon</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
                                 type="checkbox"
                                 class="type-check"
                                 value="dark"
                             />
-                            🌑 Dark</label
-                        >
+                            <span class="pill dark">Dark</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="steel"
+                            />
+                            <span class="pill steel">Steel</span>
+                        </label>
+
+                        <label class="pill-checkbox">
+                            <input
+                                type="checkbox"
+                                class="type-check"
+                                value="fairy"
+                            />
+                            <span class="pill fairy">Fairy</span>
+                        </label>
                     </div>
 
                     <h3 class="filter-heading">Min HP</h3>

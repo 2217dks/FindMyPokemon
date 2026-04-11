@@ -9,7 +9,7 @@ const nextBtn = document.getElementById("next-btn");
 const pageInfo = document.getElementById("page-info");
 const sortSelect = document.getElementById("sort-select");
 
-const generationEndpoints = {
+const generationSize = {
     1: { offset: 0, limit: 151 },
     2: { offset: 151, limit: 100 },
     3: { offset: 251, limit: 135 },
@@ -38,18 +38,7 @@ function displayPokemon(pokemon) {
     const defense = pokemon.stats[2].base_stat;
     const speed = pokemon.stats[5].base_stat;
 
-    resultsContainer.innerHTML = `
-        <div class="pokemon-card">
-            <img src="${hdImage}" alt="${name}" class="pokemon-image">
-            <h2>${name}</h2>
-            <p>#${id}</p>
-            <p><strong>Weight:</strong> ${weight} kg</p>
-            <p><strong>Types:</strong> ${types}</p>
-            <p><strong>HP:</strong> ${hp}</p>
-            <p><strong>Attack:</strong> ${attack}</p>
-            <p><strong>Defense:</strong> ${defense}</p>
-            <p><strong>Speed:</strong> ${speed}</p>
-        </div>`;
+    resultsContainer.innerHTML = renderPokemonCard(pokemon);
 }
 
 async function fetchPokemon(pokemonName) {
@@ -79,8 +68,8 @@ async function fetchSelectedGenerations() {
             const genNumber = checkbox.value;
 
             if (!cachedGenerations[genNumber]) {
-                const limit = generationEndpoints[genNumber].limit;
-                const offset = generationEndpoints[genNumber].offset;
+                const limit = generationSize[genNumber].limit;
+                const offset = generationSize[genNumber].offset;
 
                 cachedGenerations[genNumber] = fetch(
                     `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`,
@@ -107,6 +96,20 @@ async function fetchSelectedGenerations() {
 function applyFilters() {
     let results = [...allFetchedPokemon];
 
+    const checkedTypeBoxes = document.querySelectorAll(".type-check:checked");
+
+    const selectedTypes = Array.from(checkedTypeBoxes).map((box) => box.value);
+
+    if (selectedTypes.length > 0) {
+        results = results.filter((pokemon) => {
+            const pokeTypes = pokemon.types.map((t) => t.type.name);
+
+            return selectedTypes.every((checkedType) =>
+                pokeTypes.includes(checkedType),
+            );
+        });
+    }
+
     const sortValue = sortSelect ? sortSelect.value : "id";
 
     results.sort((a, b) => {
@@ -122,8 +125,7 @@ function applyFilters() {
     currentPage = 1;
 
     if (filteredPokemon.length === 0) {
-        resultsContainer.innerHTML =
-            "<p>Please select a Generation to begin!</p>";
+        resultsContainer.innerHTML = "<p>No pokemon found!</p>";
         if (pageControls) pageControls.style.display = "none";
     } else {
         renderPage();
@@ -153,22 +155,7 @@ function renderPage() {
             currentPage >= totalPages ? "hidden" : "visible";
 
     resultsContainer.innerHTML = singlePageOfPokemon
-        .map((pokemon) => {
-            const name = pokemon.name.toUpperCase();
-            const types = pokemon.types.map((t) => t.type.name).join(", ");
-            const hdImage =
-                pokemon.sprites.other["official-artwork"].front_default;
-
-            return `
-        <div class="pokemon-card">
-            <img src="${hdImage}" alt="${name}" class="pokemon-image">
-            <h2>${name}</h2>
-            <p>#${pokemon.id}</p>
-            <p><strong>Types:</strong> ${types}</p>
-            <p><strong>HP:</strong> ${pokemon.stats[0].base_stat}</p>
-            <p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>
-        </div>`;
-        })
+        .map((pokemon) => renderPokemonCard(pokemon))
         .join("");
 }
 
@@ -196,6 +183,47 @@ function showBrowser() {
     if (pageControls) pageControls.style.display = "none";
 
     applyFilters();
+}
+
+function renderPokemonCard(pokemon) {
+    const name = pokemon.name.toUpperCase();
+    const id = pokemon.id;
+    const hdImage = pokemon.sprites.other["official-artwork"].front_default;
+    const typesHTML = pokemon.types
+        .map((t) => `<span class="pill ${t.type.name}">${t.type.name}</span>`)
+        .join("");
+
+    const abilitiesHTML = pokemon.abilities
+        .map((a) => `<li>${a.ability.name.replace("-", " ")}</li>`)
+        .join("");
+
+    const hp = pokemon.stats[0].base_stat;
+    const attack = pokemon.stats[1].base_stat;
+    const defense = pokemon.stats[2].base_stat;
+    const speed = pokemon.stats[5].base_stat;
+
+    return `
+        <div class="pokemon-card">
+            <p class="pokemon-id">#${id}</p>
+            <img src="${hdImage}" alt="${name}" class="pokemon-image">
+            <h2 class="pokemon-name">${name}</h2>
+            
+            <div class="pill-container">
+                ${typesHTML}
+            </div>
+            <div class="abilities-section">
+                <p><strong>Abilities:</strong></p>
+                <ul>
+                    ${abilitiesHTML}
+                </ul>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box"><p class="stat-name">HP</p><p class="stat-value">${hp}</p></div>
+                <div class="stat-box"><p class="stat-name">ATK</p><p class="stat-value">${attack}</p></div>
+                <div class="stat-box"><p class="stat-name">DEF</p><p class="stat-value">${defense}</p></div>
+                <div class="stat-box"><p class="stat-name">SPD</p><p class="stat-value">${speed}</p></div>
+            </div>
+        </div>`;
 }
 
 searchForm.addEventListener("submit", async (event) => {
@@ -244,4 +272,7 @@ if (nextBtn) {
         }
     });
 }
-showBrowser();
+document.querySelectorAll(".type-check").forEach((checkbox) => {
+    checkbox.addEventListener("change", applyFilters);
+});
+fetchSelectedGenerations();
