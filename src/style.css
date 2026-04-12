@@ -260,7 +260,7 @@ main {
 
 .results-section {
     flex-grow: 1;
-    padding: 20px;
+    padding: 5px;
 }
 
 .results-container {
@@ -309,11 +309,10 @@ main {
 
 .pokemon-card {
     width: 250px;
-    padding: 20px;
+    padding: 15px;
     border-radius: 20px;
     background: var(--card-bg);
     border: 2px solid var(--border);
-    /* box-shadow: 0 4px 10px var(--shadow); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -355,6 +354,7 @@ main {
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: auto;
     gap: 10px;
     width: 100%;
 }
@@ -415,6 +415,10 @@ main {
         font-size: 0.8rem;
     }
 
+    #search-form {
+        width: 90%;
+    }
+
     .browser {
         flex-direction: column;
     }
@@ -442,14 +446,13 @@ main {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
-        margin: 15px 10px;
+        gap: 10px;
+        margin: 15px 0px;
     }
 
     .pokemon-card {
-        width: calc(45%);
+        width: 45vw;
         max-width: 250px;
-        padding: 10px;
         box-sizing: border-box;
     }
 
