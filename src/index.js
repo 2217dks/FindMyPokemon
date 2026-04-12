@@ -48,7 +48,7 @@ function renderPokemonCard(pokemon) {
             <p class="pokemon-id">#${id}</p>
             <img src="${hdImage}" alt="${name}" class="pokemon-image">
             <h2 class="pokemon-name">${name}</h2>
-            
+
             <div class="pill-container">
                 ${typesHTML}
             </div>
